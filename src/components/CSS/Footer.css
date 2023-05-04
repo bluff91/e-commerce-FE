@@ -1,0 +1,28 @@
+footer {
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  background-color: var(--clr-black);
+}
+
+.footer-trademark {
+  color: var(--clr-primary-7);
+}
+
+.footer h5 {
+  color: var(--clr-white);
+  margin: 0.1rem;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1.25;
+}
+
+@media (min-width: 776px) {
+  footer {
+    flex-direction: row;
+  }
+}
