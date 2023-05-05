@@ -1,0 +1,25 @@
+/* FEATURED PRODUCT CSS */
+.featured-products {
+  background-color: var(--clr-grey-10);
+}
+.section-center.featured {
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.section-center.featured img {
+  height: 225px;
+}
+
+.featured-btn.btn {
+  display: block;
+  color: red;
+  margin: 0 auto;
+
+  display: block;
+  width: 148px;
+  margin: 0 auto;
+  text-align: center;
+}

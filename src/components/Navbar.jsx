@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 import CartButtons from './CartButtons'
 import { links } from '../utils/constants'
+import { useProductsContext } from '../context/products_context'
 
 const Navbar = () => {
+  const { openSidebar } = useProductsContext()
+
   return (
     <nav>
       <div className="nav-center">
@@ -13,7 +16,7 @@ const Navbar = () => {
           <Link to="/">
             <img src={logo} alt="comfy-sloth" />
           </Link>
-          <button className="nav-toggle">
+          <button className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
         </div>

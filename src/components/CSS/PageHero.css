@@ -1,0 +1,22 @@
+/* PAGE HERO CSS */
+.page-hero {
+  background-color: var(--clr-primary-10);
+  width: 100%;
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+.page-hero h3 {
+  color: var(--clr-primary-1);
+}
+
+.page-hero a {
+  color: var(--clr-primary-3);
+  padding: 0.5rem;
+  transition: var(--transition);
+}
+
+.page-hero a:hover {
+  color: var(--clr-primary-1);
+}

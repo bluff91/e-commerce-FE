@@ -1,0 +1,73 @@
+/* CONTACT CSS */
+
+.contact-container {
+  display: grid;
+  place-items: center;
+  padding: 5rem 0;
+}
+
+.contact-container h3 {
+  text-transform: none;
+}
+
+.content p {
+  line-height: 2;
+  color: var(--clr-grey-5);
+}
+.contact-form {
+  display: flex;
+}
+
+.contact-form input,
+.submit-btn {
+  border: 2px solid var(--clr-black);
+  padding: 0.5rem 0.75rem;
+  color: var(--clr-black);
+  font-size: 1rem;
+}
+.contact-form input::placeholder {
+  color: var(--clr-black);
+  text-transform: capitalize;
+}
+.contact-form input {
+  border-right: none;
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+}
+
+.submit-btn {
+  background-color: var(--clr-primary-5);
+  letter-spacing: var(--spacing);
+  transition: var(--transition);
+  text-transform: capitalize;
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.submit-btn:hover {
+  color: var(--clr-white);
+}
+
+@media (min-width: 992px) {
+  .contact-container .section-center {
+    padding: 5rem 0;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    margin-top: 2rem;
+  }
+
+  .content p {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .contact-container .section-center {
+    padding-bottom: 10rem;
+  }
+}
