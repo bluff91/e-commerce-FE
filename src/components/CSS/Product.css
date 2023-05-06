@@ -1,11 +1,11 @@
 /* PRODUCT CSS */
 
-.container {
+.product-container {
   border-radius: var(--radius);
   position: relative;
 }
 
-.container img {
+.product-container img {
   width: 100%;
   display: block;
   object-fit: cover;
@@ -17,6 +17,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--clr-primary-5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,33 +31,34 @@
 }
 
 .link svg {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: var(--clr-white);
 }
 
-.container:hover img {
+.product-container:hover img {
   opacity: 0.5;
 }
-.container:hover .link {
+.product-container:hover .link {
   opacity: 1;
 }
 
-.footer {
+.product-footer {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.footer h5 {
+.product-footer h5 {
   color: var(--clr-black);
   text-transform: capitalize;
+  margin-bottom: 0;
 }
-.footer p {
+.product-footer p {
   margin-bottom: 0;
   font-weight: 400;
 }
 
-.footer p {
+.product-footer p {
   color: var(--clr-primary-5);
   letter-spacing: var(--spacing);
 }
