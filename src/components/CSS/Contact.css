@@ -10,7 +10,7 @@
   text-transform: none;
 }
 
-.content p {
+.contact-content p {
   line-height: 2;
   color: var(--clr-grey-5);
 }
@@ -53,7 +53,7 @@
     padding: 5rem 0;
   }
 
-  .content {
+  .contact-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@
     margin-top: 2rem;
   }
 
-  .content p {
+  .contact-content p {
     margin-bottom: 0;
   }
 }

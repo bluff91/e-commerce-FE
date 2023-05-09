@@ -1,0 +1,18 @@
+/* STARS CSS */
+
+.stars-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.stars-container .stars {
+  color: #ffb900;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+
+.stars-container p {
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+}

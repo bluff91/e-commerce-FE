@@ -1,0 +1,37 @@
+/* SINGLE PRODUCT CSS */
+
+.single-product-center {
+  display: grid;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.single-product-content .price {
+  color: var(--clr-primary-5);
+}
+
+.single-product-content .desc {
+  line-height: 2;
+}
+
+.single-product-content .info {
+  text-transform: capitalize;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+}
+
+.single-product-content .info span {
+  font-weight: 700;
+}
+
+@media (min-width: 992px) {
+  .single-product-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .single-product-content .price {
+    font-size: 1.25rem;
+  }
+}

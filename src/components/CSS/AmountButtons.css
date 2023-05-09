@@ -1,0 +1,29 @@
+/* Amount Buttons CSS */
+
+.amount-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 140px;
+  place-items: center;
+}
+
+.amount-buttons-container h2 {
+  margin-bottom: 0;
+}
+
+.amount-buttons-container button {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem 0.25rem;
+  width: 2rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amount-buttons-container button:hover {
+  color: var(--clr-grey-5);
+}

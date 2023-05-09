@@ -4,7 +4,7 @@ import { services } from '../utils/constants'
 const Services = () => {
   return (
     <div className="services-container">
-      <div className="section-center">
+      <div className="section-center services-section">
         <article className="header">
           <h3>
             custom furniture

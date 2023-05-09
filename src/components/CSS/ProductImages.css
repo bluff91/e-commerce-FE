@@ -1,0 +1,49 @@
+/* PRODUCT IMAGES CSS */
+
+.main-picture {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  object-fit: cover;
+  height: 600px;
+}
+
+.small-pictures {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1rem;
+}
+
+.small-pictures img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  object-fit: cover;
+  height: 100px;
+  cursor: pointer;
+}
+
+.small-pictures img.active {
+  box-shadow: 0px 0px 0px 2px var(--clr-primary-5);
+}
+
+@media (min-width: 576px) {
+  .main-picture {
+    height: 300px;
+  }
+
+  .small-pictures img {
+    height: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-picture {
+    height: 500px;
+  }
+
+  .small-pictures img {
+    height: 75px;
+  }
+}

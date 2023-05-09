@@ -10,6 +10,10 @@ import Hero from './Hero'
 import Error from './Error'
 import Loading from './Loading'
 import Product from './Product'
+import AddToCart from './AddToCart'
+import Stars from './Stars'
+import ProductImages from './ProductImages'
+import AmountButtons from './AmountButtons'
 
 export {
   Footer,
@@ -24,4 +28,8 @@ export {
   Error,
   Loading,
   Product,
+  AddToCart,
+  Stars,
+  ProductImages,
+  AmountButtons,
 }

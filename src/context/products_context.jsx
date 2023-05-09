@@ -10,7 +10,7 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
 } from '../utils/actions'
-import { products_url, single_product_url } from '../utils/constants'
+import { products_url } from '../utils/constants'
 import axios from 'axios'
 
 //Remark:
@@ -49,7 +49,7 @@ const ProductsProvider = ({ children }) => {
   const fetchSingleProduct = async (url) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
     try {
-      const { data } = axios.get(url)
+      const { data } = await axios.get(url)
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data })
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
@@ -60,7 +60,7 @@ const ProductsProvider = ({ children }) => {
   useEffect(() => {
     fetchProducts(products_url)
   }, [])
-  console.log(state.product_error)
+
   const openSidebar = () => {
     dispatch({ type: OPEN_SIDEBAR })
   }

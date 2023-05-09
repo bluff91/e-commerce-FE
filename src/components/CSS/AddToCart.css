@@ -1,0 +1,53 @@
+/* AddToCart CSS */
+
+.add-to-cart-container {
+  margin-top: 2rem;
+}
+
+.add-to-cart-container .colors {
+  display: flex;
+  gap: 2rem;
+}
+
+.add-to-cart-container .colors span {
+  text-transform: capitalize;
+  color: var(--clr-grey-3);
+  line-height: 1.5rem;
+  font-weight: 700;
+}
+.add-to-cart-container .colors div {
+  display: flex;
+}
+
+.add-to-cart-container .colors .color-btn {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #222;
+  margin-right: 0.5rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colors .color-btn svg {
+  font-size: 0.75rem;
+  color: var(--clr-white);
+}
+
+.colors .color-btn .active {
+  opacity: 1;
+}
+
+.add-to-cart-btn-container {
+  margin-top: 2rem;
+}
+
+.add-to-cart-btn-container .btn {
+  margin-top: 1rem;
+  width: 148px;
+}
