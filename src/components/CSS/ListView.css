@@ -1,0 +1,42 @@
+/* LISTVIEW CSS */
+.list-view-container {
+  display: grid;
+  row-gap: 3rem;
+}
+
+.list-view-container img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  width: 300px;
+  height: 200px;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.list-view-container h4 {
+  margin-bottom: 0.5rem;
+}
+
+.list-view-container .price {
+  color: var(--clr-primary-6);
+  margin-bottom: 0.75rem;
+}
+
+.list-view-container p {
+  margin-bottom: 1rem;
+}
+
+.list-view-container btn {
+  font-size: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .list-view-container article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 2rem;
+    align-items: center;
+  }
+}

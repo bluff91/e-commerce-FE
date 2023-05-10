@@ -8,7 +8,7 @@ const PageHero = ({ title, product }) => {
         <h3>
           <Link to="/">Home /</Link>
           <span>
-            {product && <Link to="/products">Products </Link>} / {title}
+            {product && <Link to="/products">Products /</Link>} {title}
           </span>
         </h3>
       </div>

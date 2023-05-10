@@ -1,0 +1,21 @@
+/* GRIDVIEW CSS */
+.grid-view-container .products-container {
+  display: grid;
+  gap: 2.5rem 1.5rem;
+}
+
+.grid-view-container .products-container img {
+  height: 175px;
+}
+
+@media (min-width: 992px) {
+  .grid-view-container .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1170px) {
+  .grid-view-container .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
