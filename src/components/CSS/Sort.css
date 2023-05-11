@@ -1,0 +1,68 @@
+/* SORT CSS */
+
+.sort-container {
+  display: grid;
+
+  align-items: center;
+  /* grid-template-columns: auto auto 1fr auto; */
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.sort-btns-container {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.sort-btns-container button {
+  display: flex;
+  place-items: center;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--clr-black);
+  border-radius: var(--radius);
+}
+.sort-btns-container button.active {
+  background: var(--clr-black);
+  color: var(--clr-white);
+}
+
+.sort-btns-container svg {
+  font-size: 1.5rem;
+  padding: 0.1rem;
+}
+.sort-container p {
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+.sort-container form {
+  display: flex;
+  place-items: center;
+  gap: 0.5rem;
+}
+
+.sort-container .sort-input {
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+}
+
+.sort-container form label {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+@media (min-width: 576px) {
+  .sort-container {
+    grid-template-columns: auto auto 1fr auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .sort-container {
+    column-gap: 2rem;
+  }
+}

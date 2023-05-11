@@ -1,10 +1,13 @@
-import { PageHero, Filters, Sort, ProductList } from '../components'
+import { PageHero, Filters, Sort, ProductList, Loading } from '../components'
 import { useFiltersContext } from '../context/filters_context'
 import './CSS/Products.css'
 
 const Products = () => {
-  const data = useFiltersContext()
-  console.log('data from products', data)
+  const { products_loading } = useFiltersContext()
+
+  if (products_loading) {
+    return <Loading />
+  }
   return (
     <div className="products-container">
       <PageHero title="products" />

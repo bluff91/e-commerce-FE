@@ -2,9 +2,13 @@ import { ListView, GridView } from '../components'
 import { useFiltersContext } from '../context/filters_context'
 
 const ProductList = () => {
-  const { filtered_products: products, grid_view } = useFiltersContext()
+  const {
+    filtered_products: products,
+    grid_view,
+    products_loading,
+  } = useFiltersContext()
 
-  if (products.length < 1) {
+  if (products.length < 1 && products_loading) {
     return <h5>Sorry, No Products matched your search...</h5>
   }
 

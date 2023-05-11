@@ -6,10 +6,12 @@ import { formatPrice } from '../utils/helpers'
 const Product = ({ id, name, price, image }) => {
   return (
     <div className="product-container">
-      <img src={image} alt={name} />
-      <Link to={`/products/${id}`} className="link">
-        <FaSearch />
-      </Link>
+      <div className="img-wrapper">
+        <img src={image} alt={name} />
+        <Link to={`/products/${id}`} className="link">
+          <FaSearch />
+        </Link>
+      </div>
       <div className="product-footer">
         <h5>{name}</h5>
         <p>{formatPrice(price)}</p>

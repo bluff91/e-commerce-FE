@@ -2,6 +2,9 @@
 
 .product-container {
   border-radius: var(--radius);
+}
+
+.product-container .img-wrapper {
   position: relative;
 }
 
@@ -13,7 +16,7 @@
   transition: var(--transition);
 }
 
-.link {
+.product-container .link {
   position: absolute;
   top: 50%;
   left: 50%;

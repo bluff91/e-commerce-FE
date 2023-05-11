@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { formatPrice } from '../utils/helpers'
-import styled from 'styled-components'
 import './CSS/ListView.css'
 
 const ListView = ({ products }) => {
