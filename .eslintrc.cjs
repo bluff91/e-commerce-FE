@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'react/prop-types': 0,
+    'no-case-declarations': 0,
   },
 }

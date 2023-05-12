@@ -6,6 +6,8 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS,
 } from '../utils/actions'
 import { formatPrice } from '../utils/helpers'
 
@@ -41,7 +43,10 @@ const FiltersProvider = ({ children }) => {
   useEffect(() => {
     updateSort('price-lowest')
   }, [products])
-  console.log(formatPrice(state.filters.max_price))
+
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS })
+  }, [state.filters])
   const gridViewOn = () => {
     dispatch({ type: SET_GRIDVIEW })
   }
@@ -54,9 +59,24 @@ const FiltersProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS, payload: value })
   }
 
+  const updateFilters = (e) => {
+    let name = e.target.name
+    let value = e.target.value
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
+  }
+
+  const clearFilters = () => {}
+  console.log(state.all_products[2])
   return (
     <FiltersContext.Provider
-      value={{ ...state, gridViewOn, listViewOn, updateSort }}
+      value={{
+        ...state,
+        gridViewOn,
+        listViewOn,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FiltersContext.Provider>

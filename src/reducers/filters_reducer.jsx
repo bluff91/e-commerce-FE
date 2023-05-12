@@ -3,12 +3,13 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS,
 } from '../utils/actions'
 
 const reducer = (state, action) => {
   switch (action.type) {
     case LOAD_PRODUCTS:
-      // eslint-disable-next-line no-case-declarations
       let maxPrice = action.payload.map((item) => item.price)
       maxPrice = Math.max(...maxPrice)
 
@@ -64,6 +65,13 @@ const reducer = (state, action) => {
       }
       return state
 
+    case UPDATE_FILTERS:
+      const { name, value } = action.payload
+      return { ...state, filters: { ...state.filters, [name]: value } }
+
+    case FILTER_PRODUCTS:
+      console.log('placeHOLDER for "filter products"')
+      return { ...state }
     default:
       throw new Error(`No such action '${action.type}' to dispatch`)
   }
