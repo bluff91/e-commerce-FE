@@ -5,14 +5,11 @@ export const formatPrice = (number) => {
   }).format(number / 100)
 }
 
-export const getUniqueValues = (parameter, array) => {
+export const getUniqueValues = (array, categoryTerm) => {
   let newArray = []
-  for (let i = 0; i < array.length; i++) {
-    console.log('parameter is:', parameter)
-    console.log('plm:', array[i].parameter)
-    newArray.push(array[i].parameter)
+  newArray = array.map((item) => item[categoryTerm])
+  if (categoryTerm === 'colors') {
+    newArray = newArray.flat()
   }
-
-  const mySet = new Set(['all', ...newArray])
-  console.log(mySet)
+  return ['all', ...new Set(newArray)]
 }

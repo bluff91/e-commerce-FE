@@ -5,6 +5,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
+  CLEAR_FILTERS,
 } from '../utils/actions'
 
 const reducer = (state, action) => {
@@ -72,6 +73,20 @@ const reducer = (state, action) => {
     case FILTER_PRODUCTS:
       console.log('placeHOLDER for "filter products"')
       return { ...state }
+
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: '',
+          company: 'all',
+          category: 'all',
+          color: 'all',
+          price: state.filters.max_price,
+          free_shipping: false,
+        },
+      }
     default:
       throw new Error(`No such action '${action.type}' to dispatch`)
   }

@@ -8,6 +8,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
+  CLEAR_FILTERS,
 } from '../utils/actions'
 import { formatPrice } from '../utils/helpers'
 
@@ -62,11 +63,21 @@ const FiltersProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name
     let value = e.target.value
+    console.log('name is:', name)
+    console.log('value is:', value)
+    if (name === 'price') {
+      value = Number(value)
+    }
+    if (name === 'free_shipping') {
+      value = e.target.checked
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
 
-  const clearFilters = () => {}
-  console.log(state.all_products[2])
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS })
+  }
+
   return (
     <FiltersContext.Provider
       value={{

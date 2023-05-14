@@ -8,6 +8,6 @@
 
 @media (min-width: 768px) {
   .products-container .products {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 220px 1fr;
   }
 }

@@ -1,19 +1,16 @@
 import { FaCheck } from 'react-icons/fa'
-import { useState } from 'react'
-import styled from 'styled-components'
 import { useFiltersContext } from '../context/filters_context'
 import { formatPrice, getUniqueValues } from '../utils/helpers'
-import { useEffect } from 'react'
+import './CSS/Filters.css'
 
 const Filters = () => {
-  const [queryWord, setQueryWord] = useState('')
   const {
     all_products,
     filters: {
       text,
       company,
       category,
-      colors,
+      color,
       min_price,
       max_price,
       price,
@@ -22,7 +19,11 @@ const Filters = () => {
     updateFilters,
     clearFilters,
   } = useFiltersContext()
-  getUniqueValues('category', all_products)
+
+  const companyArr = getUniqueValues(all_products, 'company')
+  const categoryArr = getUniqueValues(all_products, 'category')
+  const colorArr = getUniqueValues(all_products, 'colors')
+
   return (
     <div className="filters-container">
       <div className="content">
@@ -39,109 +40,138 @@ const Filters = () => {
             />
           </div>
           {/* end of search input */}
+
+          {/* categories list */}
+          <div className="form-control">
+            <h5>Category:</h5>
+            <div className="categories-fitler">
+              {categoryArr.map((item, index) => {
+                return (
+                  <button
+                    type="text"
+                    id="category"
+                    name="category"
+                    value={item}
+                    key={index}
+                    onClick={updateFilters}
+                    className={`${
+                      category === item.toLowerCase() ? 'active' : null
+                    }`}
+                  >
+                    {item}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          {/* end of categories list */}
+
+          {/* companies list */}
+          <div className="form-control">
+            <h5>Company</h5>
+            <select
+              className="company-filters"
+              name="company"
+              onChange={updateFilters}
+              value={company}
+            >
+              {companyArr.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* end of companies list */}
+
+          {/* colors list */}
+          <div className="form-control">
+            <h5>Colors:</h5>
+            <div className="colors-filter">
+              {colorArr.map((item, index) => {
+                if (item === 'all') {
+                  return (
+                    <button
+                      key={item}
+                      name="color"
+                      value={item}
+                      onClick={updateFilters}
+                      className={`all-colors-button ${
+                        color === item ? 'active' : null
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  )
+                } else {
+                  return (
+                    <button
+                      style={{
+                        backgroundColor: item,
+                        borderRadius: '50%',
+                        opacity: 0.5,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                      className={`all-colors-button ${
+                        color === item ? 'active' : null
+                      }`}
+                      key={index}
+                      name="color"
+                      value={item}
+                      onClick={updateFilters}
+                    >
+                      {color === item ? (
+                        <FaCheck className="colors-icon" />
+                      ) : null}
+                    </button>
+                  )
+                }
+              })}
+            </div>
+          </div>
+          {/* end of colors list */}
+
+          {/* price range selector */}
+          <div className="form-control">
+            <div className="categories-fitler">
+              <h5>Price: </h5>
+              <p>{formatPrice(price)}</p>
+              <input
+                name="price"
+                type="range"
+                id="price-selector"
+                min={min_price}
+                max={max_price}
+                value={price}
+                onChange={updateFilters}
+              />
+            </div>
+          </div>
+          {/* end of price range selector */}
+
+          {/* start of shipping */}
+          <div className="form-control">
+            <div className="free-shipping">
+              <label htmlFor="free-shipping">Free Shipping: </label>
+              <input
+                type="checkbox"
+                name="free_shipping"
+                onChange={updateFilters}
+                id="free-shipping"
+                checked={free_shipping}
+              />
+            </div>
+          </div>
+          {/* end of shipping */}
         </form>
+        <button className="clear-filters-btn" onClick={clearFilters}>
+          clear filters
+        </button>
       </div>
     </div>
   )
 }
 
-const Wrapper = styled.section`
-  .form-control {
-    margin-bottom: 1.25rem;
-    h5 {
-      margin-bottom: 0.5rem;
-    }
-  }
-  .search-input {
-    padding: 0.5rem;
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    letter-spacing: var(--spacing);
-  }
-  .search-input::placeholder {
-    text-transform: capitalize;
-  }
-
-  button {
-    display: block;
-    margin: 0.25em 0;
-    padding: 0.25rem 0;
-    text-transform: capitalize;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid transparent;
-    letter-spacing: var(--spacing);
-    color: var(--clr-grey-5);
-    cursor: pointer;
-  }
-  .active {
-    border-color: var(--clr-grey-5);
-  }
-  .company {
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    padding: 0.25rem;
-  }
-  .colors {
-    display: flex;
-    align-items: center;
-  }
-  .color-btn {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: #222;
-    margin-right: 0.5rem;
-    border: none;
-    cursor: pointer;
-    opacity: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      font-size: 0.5rem;
-      color: var(--clr-white);
-    }
-  }
-  .all-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
-    opacity: 0.5;
-  }
-  .active {
-    opacity: 1;
-  }
-  .all-btn .active {
-    text-decoration: underline;
-  }
-  .price {
-    margin-bottom: 0.25rem;
-  }
-  .shipping {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    text-transform: capitalize;
-    column-gap: 0.5rem;
-    font-size: 1rem;
-    max-width: 200px;
-  }
-  .clear-btn {
-    background: var(--clr-red-dark);
-    color: var(--clr-white);
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius);
-  }
-  @media (min-width: 768px) {
-    .content {
-      position: sticky;
-      top: 1rem;
-    }
-  }
-`
 export default Filters
