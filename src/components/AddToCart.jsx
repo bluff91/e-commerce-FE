@@ -3,10 +3,14 @@ import { FaCheck } from 'react-icons/fa'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import AmountButtons from './AmountButtons'
+import { useCartContext } from '../context/cart_context'
 
-const AddToCart = ({ id, stock, colors = [] }) => {
+const AddToCart = (product) => {
+  const { id, stock, colors = [] } = product
   const [amount, setAmount] = useState(1)
   const [mainColor, setMainColor] = useState(colors[0])
+
+  const { addToCart } = useCartContext()
 
   const toggleAmount = (command) => {
     setAmount((prevState) => {
@@ -50,7 +54,11 @@ const AddToCart = ({ id, stock, colors = [] }) => {
           amount={amount}
           toggleAmount={toggleAmount}
         />
-        <Link to="/cart" className="btn">
+        <Link
+          to="/cart"
+          className="btn"
+          onClick={() => addToCart(id, mainColor, amount, product)}
+        >
           add to cart
         </Link>
       </div>
