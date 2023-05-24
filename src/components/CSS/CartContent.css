@@ -1,0 +1,24 @@
+/* CARTCONTENT CSS */
+
+.cart-content .link-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.cart-content .link-container .link-btn {
+  background: transparent;
+  color: var(--clr-white);
+  border-color: transparent;
+  text-transform: capitalize;
+  border-radius: var(--radius);
+  background-color: var(--clr-primary-5);
+  padding: 0.25rem 0.5rem;
+  letter-spacing: var(--spacing);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.cart-content .link-container .clear-btn {
+  background-color: var(--clr-black);
+}
