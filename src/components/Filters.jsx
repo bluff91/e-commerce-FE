@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback } from 'react'
 import { FaCheck } from 'react-icons/fa'
 import { useFiltersContext } from '../context/filters_context'
 import { formatPrice, getUniqueValues } from '../utils/helpers'
@@ -20,9 +22,15 @@ const Filters = () => {
     clearFilters,
   } = useFiltersContext()
 
-  const companyArr = getUniqueValues(all_products, 'company')
-  const categoryArr = getUniqueValues(all_products, 'category')
-  const colorArr = getUniqueValues(all_products, 'colors')
+  const companyArr = useCallback(getUniqueValues(all_products, 'company'), [
+    all_products,
+  ])
+  const categoryArr = useCallback(getUniqueValues(all_products, 'category'), [
+    all_products,
+  ])
+  const colorArr = useCallback(getUniqueValues(all_products, 'colors'), [
+    all_products,
+  ])
 
   return (
     <div className="filters-container">

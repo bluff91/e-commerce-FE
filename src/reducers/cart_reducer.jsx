@@ -5,6 +5,7 @@ const reducer = (state, action) => {
     case ADD_TO_CART:
       const { id, amount, color, product } = action.payload
       const tempItem = state.cartProducts.find((item) => item.id === id + color)
+
       if (tempItem) {
         const tempCart = state.cartProducts.map((item) => {
           if (item.id === id + color) {
@@ -15,7 +16,20 @@ const reducer = (state, action) => {
             return { ...item, amount: tempAmount }
           }
         })
-        return { ...state, cartProducts: tempCart }
+        return {
+          ...state,
+          cartProducts: tempCart,
+          total_items: state.total_items + amount,
+          total_amount:
+            state.cartProducts.reduce((total, product) => {
+              const { price, amount } = product
+
+              total = price * amount
+              return total
+            }, 0) + product.shipping
+              ? 0
+              : state.shipping_fee,
+        }
       } else {
         const newItem = {
           id: id + color,
@@ -29,6 +43,16 @@ const reducer = (state, action) => {
         return {
           ...state,
           cartProducts: [...state.cartProducts, newItem],
+          total_items: state.total_items + amount,
+          total_amount:
+            state.cartProducts.reduce((total, product) => {
+              const { price, amount } = product
+              total = price * amount
+              console.log('total = ', total)
+              return total
+            }, 0) + product.shipping
+              ? 0
+              : state.shipping_fee,
         }
       }
 

@@ -19,6 +19,7 @@ import ProductList from './ProductList'
 import Filters from './Filters'
 import ListView from './ListView'
 import GridView from './GridView'
+import CartContent from './CartContent'
 
 export {
   Footer,
@@ -42,4 +43,5 @@ export {
   ProductList,
   ListView,
   GridView,
+  CartContent,
 }

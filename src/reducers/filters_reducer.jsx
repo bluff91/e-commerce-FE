@@ -71,8 +71,44 @@ const reducer = (state, action) => {
       return { ...state, filters: { ...state.filters, [name]: value } }
 
     case FILTER_PRODUCTS:
-      console.log('placeHOLDER for "filter products"')
-      return { ...state }
+      const { text, category, company, color, price, free_shipping } =
+        state.filters
+      let filteredProducts = state.all_products
+      if (text) {
+        filteredProducts = filteredProducts.filter((item) =>
+          item.name.toLowerCase().includes(text.toLowerCase())
+        )
+      }
+      if (category !== 'all') {
+        filteredProducts = filteredProducts.filter(
+          (item) => item.category === category
+        )
+      }
+      if (company !== 'all') {
+        filteredProducts = filteredProducts.filter(
+          (item) => item.company === company
+        )
+      }
+      if (color !== 'all') {
+        filteredProducts = filteredProducts.filter((item) =>
+          item.colors.includes(color)
+        )
+      }
+      if (price !== 0) {
+        filteredProducts = filteredProducts.filter(
+          (item) => item.price <= price
+        )
+      }
+      if (free_shipping) {
+        filteredProducts = filteredProducts.filter(
+          (item) => item.shipping === true
+        )
+      }
+
+      return {
+        ...state,
+        filtered_products: filteredProducts,
+      }
 
     case CLEAR_FILTERS:
       return {

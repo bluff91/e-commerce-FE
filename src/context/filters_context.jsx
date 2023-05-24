@@ -46,8 +46,9 @@ const FiltersProvider = ({ children }) => {
   }, [products])
 
   useEffect(() => {
-    dispatch({ type: FILTER_PRODUCTS })
+    dispatch({ type: FILTER_PRODUCTS, payload: state.filters })
   }, [state.filters])
+
   const gridViewOn = () => {
     dispatch({ type: SET_GRIDVIEW })
   }
@@ -63,8 +64,6 @@ const FiltersProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name
     let value = e.target.value
-    console.log('name is:', name)
-    console.log('value is:', value)
     if (name === 'price') {
       value = Number(value)
     }

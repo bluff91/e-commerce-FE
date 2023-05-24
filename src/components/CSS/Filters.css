@@ -3,12 +3,12 @@
   margin-right: 2rem;
 }
 .filters-container .form-control {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .filters-container .form-control h5 {
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .form-control .search-filter {
@@ -35,7 +35,7 @@
   cursor: pointer;
   text-transform: capitalize;
   color: var(--clr-grey-5);
-  font-size: 1.2rem;
+  font-size: 1rem;
   width: fit-content;
   letter-spacing: var(--spacing);
   border-bottom: 1px solid transparent;
