@@ -1,0 +1,33 @@
+/* CARTCOLUMNS CSS */
+
+.cart-columns {
+  display: none;
+}
+
+@media (min-width: 776px) {
+  .cart-columns {
+    display: block;
+  }
+
+  .cart-columns .cart-content {
+    display: grid;
+    grid-template-columns: 316px 1fr 1fr 1fr auto;
+    justify-items: center;
+    column-gap: 1rem;
+  }
+
+  .cart-columns .cart-content h5 {
+    color: var(--clr-grey-5);
+    font-weight: 400;
+  }
+
+  .cart-columns .cart-content span {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .cart-columns hr {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+}

@@ -1,0 +1,86 @@
+/* CARTITEM CSS */
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 200px auto auto;
+  place-items: center;
+  gap: 3rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.cart-item-title {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-item-title img {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius);
+}
+
+.cart-item-title div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-item-title h5,
+p,
+span {
+  margin: 0;
+}
+
+.cart-item-title .cartitemcolor {
+  margin: 0;
+  text-transform: capitalize;
+  color: var(--clr-grey-4);
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  gap: 0.5rem;
+}
+
+.cart-item-title .cartitemcolor span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+.cart-item .cart-item-price-small {
+  color: var(--clr-primary-5);
+}
+
+.cart-item-price {
+  display: none;
+}
+
+.cart-item-subtotal {
+  display: none;
+}
+
+.cart-item .remove-btn {
+  color: var(--clr-white);
+  padding: 0.25rem 0.25rem;
+  background: var(--clr-red-dark);
+  border-color: transparent;
+  border-radius: var(--radius);
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  place-items: center;
+}
+
+.cart-item .amount-buttons-container {
+  width: 100px;
+}
+
+.cart-item .amount-buttons-container button {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.15rem;
+}
+
+.cart-item .amount-buttons-container h2 {
+  font-size: 1.25rem;
+}

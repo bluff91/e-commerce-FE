@@ -1,0 +1,50 @@
+/* CARTTOTALS CSS */
+
+.cart-totals {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cart-totals article {
+  border: 1px solid var(--clr-grey-8);
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius);
+  min-width: 400px;
+}
+
+.cart-totals h5,
+h4,
+p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-totals p {
+  text-transform: capitalize;
+}
+.cart-totals h4 {
+  color: var(--clr-black);
+}
+
+.cart-totals hr {
+  margin-bottom: 2rem;
+}
+
+.cart-totals div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-totals .btn {
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (min-width: 776px) {
+  .cart-totals {
+    justify-content: flex-end;
+  }
+}
