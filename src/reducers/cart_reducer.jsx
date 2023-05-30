@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../utils/actions'
+import { ADD_TO_CART, REMOVE_CART_ITEM } from '../utils/actions'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,6 +54,14 @@ const reducer = (state, action) => {
               ? 0
               : state.shipping_fee,
         }
+      }
+
+    case REMOVE_CART_ITEM:
+      return {
+        ...state,
+        cartProducts: state.cartProducts.filter(
+          (item) => item.id !== action.payload
+        ),
       }
 
     default:
