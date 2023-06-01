@@ -1,7 +1,13 @@
 import { useEffect } from 'react'
 import { useContext, createContext, useReducer } from 'react'
 import reducer from '../reducers/cart_reducer'
-import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from '../utils/actions'
+import {
+  ADD_TO_CART,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
+  TOGGLE_ITEM_AMOUNT,
+  CALCULATE_TOTALS,
+} from '../utils/actions'
 
 const CartContext = createContext()
 
@@ -24,6 +30,7 @@ const CartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('cartProducts', JSON.stringify(state.cartProducts))
+    dispatch({ type: CALCULATE_TOTALS })
   }, [state.cartProducts])
 
   console.log('total $ is: ', state.total_amount)
@@ -35,8 +42,8 @@ const CartProvider = ({ children }) => {
   const removeItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: id })
   }
-  const toggleAmount = (id, value) => {
-    console.log('toggle amount')
+  const toggleAmount = (value, id) => {
+    dispatch({ type: TOGGLE_ITEM_AMOUNT, payload: { id, value } })
   }
   const clearCart = () => {
     dispatch({ type: CLEAR_CART })

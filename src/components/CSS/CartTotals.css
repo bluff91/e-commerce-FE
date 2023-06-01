@@ -10,7 +10,7 @@
   border: 1px solid var(--clr-grey-8);
   padding: 1.5rem 2rem;
   border-radius: var(--radius);
-  min-width: 400px;
+  min-width: 350px;
 }
 
 .cart-totals h5,
@@ -46,5 +46,9 @@ p {
 @media (min-width: 776px) {
   .cart-totals {
     justify-content: flex-end;
+  }
+
+  .cart-totals h4 span {
+    margin-left: 1rem;
   }
 }

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 const CartContent = () => {
   const { cartProducts, clearCart } = useCartContext()
-
   return (
     <div className="cart-content">
       <div className="section section-center">

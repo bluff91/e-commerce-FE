@@ -1,4 +1,10 @@
-import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from '../utils/actions'
+import {
+  ADD_TO_CART,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
+  TOGGLE_ITEM_AMOUNT,
+  CALCULATE_TOTALS,
+} from '../utils/actions'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -15,20 +21,11 @@ const reducer = (state, action) => {
             }
             return { ...item, amount: tempAmount }
           }
+          return item
         })
         return {
           ...state,
           cartProducts: tempCart,
-          total_items: state.total_items + amount,
-          total_amount:
-            state.cartProducts.reduce((total, product) => {
-              const { price, amount } = product
-
-              total = price * amount
-              return total
-            }, 0) + product.shipping
-              ? 0
-              : state.shipping_fee,
         }
       } else {
         const newItem = {
@@ -43,16 +40,6 @@ const reducer = (state, action) => {
         return {
           ...state,
           cartProducts: [...state.cartProducts, newItem],
-          total_items: state.total_items + amount,
-          total_amount:
-            state.cartProducts.reduce((total, product) => {
-              const { price, amount } = product
-              total = price * amount
-              console.log('total = ', total)
-              return total
-            }, 0) + product.shipping
-              ? 0
-              : state.shipping_fee,
         }
       }
 
@@ -70,6 +57,50 @@ const reducer = (state, action) => {
         cartProducts: [],
       }
 
+    case TOGGLE_ITEM_AMOUNT:
+      const { value, id: itemId } = action.payload
+      const tempCart = state.cartProducts.map((item) => {
+        const increaseAmount = (amount, max) => {
+          let newAmount = amount + 1
+          if (newAmount > max) {
+            newAmount = max
+          }
+          return newAmount
+        }
+        const decreseAmount = (amount) => {
+          let newAmount = amount - 1
+          if (newAmount < 1) {
+            newAmount = 1
+          }
+          return newAmount
+        }
+        if (item.id === itemId) {
+          if (value === 'inc') {
+            return { ...item, amount: increaseAmount(item.amount, item.max) }
+          } else if (value === 'dec') {
+            return { ...item, amount: decreseAmount(item.amount) }
+          }
+        } else return item
+      })
+      return {
+        ...state,
+        cartProducts: tempCart,
+      }
+
+    case CALCULATE_TOTALS:
+      console.log(state.total_amount)
+      return {
+        ...state,
+        total_items: state.cartProducts.reduce((total, item) => {
+          total += item.amount
+          return total
+        }, 0),
+        total_amount: state.cartProducts.reduce((total, item) => {
+          const { price, amount } = item
+          total += price * amount
+          return total
+        }, 0),
+      }
     default:
       return state
   }
