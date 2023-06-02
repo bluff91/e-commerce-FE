@@ -6,8 +6,6 @@ import { ProductsProvider } from './context/products_context'
 import { FiltersProvider } from './context/filters_context'
 import { CartProvider } from './context/cart_context.jsx'
 import { Auth0Provider } from '@auth0/auth0-react'
-//dev-m4rolx1xrlxkrl7q.eu.auth0.com
-//CJ9ZzdQ9-MTLcg4fuxhAtVSsz1tr5zXGBPTvaEAA5bwzLraWfrBg9NehjXplahW-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
