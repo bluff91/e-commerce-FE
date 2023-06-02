@@ -12,7 +12,7 @@ const AddToCart = (product) => {
 
   const { addToCart } = useCartContext()
   console.log(amount)
-  const toggleAmount = (command, id) => {
+  const toggleAmount = (command, ...rest) => {
     setAmount((prevState) => {
       if (command === 'dec') {
         if (prevState === 1) {

@@ -89,17 +89,23 @@ const reducer = (state, action) => {
 
     case CALCULATE_TOTALS:
       console.log(state.total_amount)
+      const { total_items, total_amount } = state.cartProducts.reduce(
+        (total, item) => {
+          const { price, amount } = item
+          total.total_amount += price * amount
+          total.total_items += amount
+          return total
+        },
+        {
+          total_items: 0,
+          total_amount: 0,
+        }
+      )
+
       return {
         ...state,
-        total_items: state.cartProducts.reduce((total, item) => {
-          total += item.amount
-          return total
-        }, 0),
-        total_amount: state.cartProducts.reduce((total, item) => {
-          const { price, amount } = item
-          total += price * amount
-          return total
-        }, 0),
+        total_amount,
+        total_items,
       }
     default:
       return state
