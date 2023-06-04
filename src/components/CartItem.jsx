@@ -6,9 +6,6 @@ import { formatPrice } from '../utils/helpers'
 
 const CartItem = ({ id, image, name, price, amount, color }) => {
   const { removeItem, toggleAmount } = useCartContext()
-  const toggleCartAmount = (id) => {}
-  const increase = () => {}
-  const decrease = () => {}
 
   return (
     <div className="cart-item">

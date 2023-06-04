@@ -6,6 +6,7 @@ import { ProductsProvider } from './context/products_context'
 import { FiltersProvider } from './context/filters_context'
 import { CartProvider } from './context/cart_context.jsx'
 import { Auth0Provider } from '@auth0/auth0-react'
+import { UserProvider } from './context/user_context.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,13 +18,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         redirect_uri: window.location.origin,
       }}
     >
-      <ProductsProvider>
-        <FiltersProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </FiltersProvider>
-      </ProductsProvider>
+      <UserProvider>
+        <ProductsProvider>
+          <FiltersProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FiltersProvider>
+        </ProductsProvider>
+      </UserProvider>
     </Auth0Provider>
   </React.StrictMode>
 )
