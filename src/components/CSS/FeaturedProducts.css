@@ -16,8 +16,9 @@
 
 .featured-btn.btn {
   display: block;
-  width: 148px;
+  width: 170px;
   margin: 0 auto;
+  margin-top: 5rem;
   text-align: center;
 }
 
