@@ -23,6 +23,7 @@ import CartContent from './CartContent'
 import CartColumns from './CartColumns'
 import CartItem from './CartItem'
 import CartTotals from './CartTotals'
+import StripeCheckout from './StripeCheckout'
 
 export {
   Footer,
@@ -50,4 +51,5 @@ export {
   CartColumns,
   CartItem,
   CartTotals,
+  StripeCheckout,
 }

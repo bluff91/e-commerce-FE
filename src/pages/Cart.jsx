@@ -4,7 +4,7 @@ import { useCartContext } from '../context/cart_context'
 import './CSS/Cart.css'
 
 const Cart = () => {
-  const { removeItem, toggleAmount, clearCart, cartProducts } = useCartContext()
+  const { cartProducts } = useCartContext()
 
   if (cartProducts.length < 1) {
     return (
