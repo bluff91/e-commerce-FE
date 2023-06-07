@@ -10,24 +10,19 @@ const useUserContext = () => {
 }
 
 const UserProvider = ({ children }) => {
-  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0()
+  const { loginWithRedirect, logout, user } = useAuth0()
   const [myUser, setMyUser] = useState(null)
 
   useEffect(() => {
-    if (isAuthenticated) {
-      setMyUser(user)
-    } else {
-      setMyUser(false)
-    }
-  }, [isAuthenticated])
+    setMyUser(user)
+  }, [user])
 
   return (
-    <UserContext.Provider
-      value={{ loginWithRedirect, isAuthenticated, logout, myUser, user }}
-    >
+    <UserContext.Provider value={{ loginWithRedirect, logout, myUser, user }}>
       {children}
     </UserContext.Provider>
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { useUserContext, UserProvider }
