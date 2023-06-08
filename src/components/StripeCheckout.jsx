@@ -6,34 +6,91 @@ import {
   Elements,
 } from '@stripe/react-stripe-js'
 import { useUserContext } from '../context/user_context'
+import { useCartContext } from '../context/cart_context'
+import { formatPrice } from '../utils/helpers'
+import axios from 'axios'
 import './CSS/StripeCheckout.css'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
-const stripePromise = loadStripe(
-  'pk_test_51NGJdzGbc04JW59sVKsS16D9pTDfX4gbP2hJkSKB6fL0Zx23O8xTgQzybmLnbSn7tVtrb4lFninEklWoAITHCbWI00mKIf9sAA'
-)
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 
 const CheckoutForm = () => {
   const { myUser } = useUserContext()
+  const { cartProducts, total_amount, shipping_fee, clearCart } = useCartContext
+  //FROM STRIPE
+  const [succeeded, setSucceeded] = useState(false)
+  const [error, setError] = useState(null)
+  const [processing, setProcessing] = useState('')
+  const [disabled, setDisabled] = useState(true)
+  const [clientSecret, setClientSecret] = useState('')
   const stripe = useStripe()
   const elements = useElements()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (elements === null) return
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    })
+  const cardStyle = {
+    style: {
+      base: {
+        color: '#32325d',
+        fontFamily: 'Arial, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#32325d',
+        },
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a',
+      },
+    },
   }
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   if (elements === null) return
+
+  //   const { error, paymentMethod } = await stripe.createPaymentMethod({
+  //     type: 'card',
+  //     card: elements.getElement(CardElement),
+  //   })
+  // }
+
+  const createPaymentIntend = async () => {
+    console.log('hello from stripe checkout')
+  }
+
+  useEffect(() => {
+    createPaymentIntend()
+  }, [])
+
+  const handleChange = async (event) => {}
+  const handleSubmit = async (event) => {}
+
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type="submit" disabled={!stripe || !elements}>
-        Pay
-      </button>
-    </form>
+    <div>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <CardElement
+          id="card-element"
+          options={cardStyle}
+          onChange={handleChange}
+        />
+        <button disabled={processing || disabled || succeeded} id="submit">
+          <span id="button-text">
+            {processing ? <div className="spinner" id="spinner"></div> : 'Pay'}
+          </span>
+        </button>
+        {/* show any error that happens durring processing of the payment */}
+        {error && <div className="card-error">{error}</div>}
+        {/* show success message upon completion */}
+        <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+          Payment Succeeded, see the result in your{' '}
+          <a href={`https://dashboard.stripe.com/test/payments`}>
+            Stripe dashboard.
+          </a>
+          Refresh the page to pay again
+        </p>
+      </form>
+    </div>
   )
 }
 
