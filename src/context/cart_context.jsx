@@ -33,7 +33,6 @@ const CartProvider = ({ children }) => {
     dispatch({ type: CALCULATE_TOTALS })
   }, [state.cartProducts])
 
-  console.log('total $ is: ', state.total_amount)
   //add to cart:
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } })

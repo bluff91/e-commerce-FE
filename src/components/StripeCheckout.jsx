@@ -17,7 +17,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 
 const CheckoutForm = () => {
   const { myUser } = useUserContext()
-  const { cartProducts, total_amount, shipping_fee, clearCart } = useCartContext
+  const { cartProducts, total_amount, shipping_fee, clearCart } =
+    useCartContext()
   //FROM STRIPE
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
@@ -45,22 +46,29 @@ const CheckoutForm = () => {
     },
   }
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   if (elements === null) return
-
-  //   const { error, paymentMethod } = await stripe.createPaymentMethod({
-  //     type: 'card',
-  //     card: elements.getElement(CardElement),
-  //   })
-  // }
-
-  const createPaymentIntend = async () => {
+  const createPaymentIntent = async () => {
+    console.log('hi?')
+    try {
+      const serverlessFunctionResponse = await axios.post(
+        '/.netlify/functions/stripePaymentIntent',
+        JSON.stringify({
+          cartProducts,
+          total_amount,
+          shipping_fee,
+        })
+      )
+      console.log(serverlessFunctionResponse)
+      if (serverlessFunctionResponse.data === 'payment-intent') {
+        // setSucceeded(true)
+      }
+    } catch (error) {
+      console.log(error)
+    }
     console.log('hello from stripe checkout')
   }
 
   useEffect(() => {
-    createPaymentIntend()
+    createPaymentIntent()
   }, [])
 
   const handleChange = async (event) => {}

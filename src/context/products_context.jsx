@@ -37,7 +37,6 @@ const ProductsProvider = ({ children }) => {
 
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN })
-    console.log('fetching products?')
     try {
       const { data } = await axios.get(url)
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data })
@@ -49,7 +48,6 @@ const ProductsProvider = ({ children }) => {
 
   const fetchSingleProduct = async (url) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
-    console.log('fetching SINGLE product?')
     try {
       const { data } = await axios.get(url)
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data })
