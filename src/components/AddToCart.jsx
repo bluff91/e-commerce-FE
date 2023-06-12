@@ -11,7 +11,6 @@ const AddToCart = (product) => {
   const [mainColor, setMainColor] = useState(colors[0])
 
   const { addToCart } = useCartContext()
-  console.log(amount)
   const toggleAmount = (command, ...rest) => {
     setAmount((prevState) => {
       if (command === 'dec') {
