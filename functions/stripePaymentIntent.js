@@ -3,7 +3,7 @@
 require('dotenv').config()
 
 // eslint-disable-next-line no-undef
-const stripe = require('stripe')(process.env.VITE_STRIPE_SECRET)
+const stripe = require('stripe')(`${process.env.VITE_STRIPE_SECRET}`)
 
 // eslint-disable-next-line no-undef
 exports.handler = async (event, context) => {
