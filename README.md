@@ -1,4 +1,4 @@
-## E-commerce project ---> [LIVE](ecommerce-comfyslot.netlify.app)
+## E-commerce project ---> [LIVE](https://ecommerce-comfyslot.netlify.app)
 
 ### Features:
 
