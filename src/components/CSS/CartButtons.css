@@ -32,7 +32,7 @@
 
   .cart-container .cart-value {
     position: absolute;
-    font-size: 0.05rem;
+    font-size: 15px;
     background-color: var(--clr-primary-5);
     color: var(--clr-white);
     padding: 12px;
